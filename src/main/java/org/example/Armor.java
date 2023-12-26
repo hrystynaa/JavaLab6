@@ -12,9 +12,15 @@ public class Armor extends Ammunition {
      * @param weight     The weight of the armor.
      * @param price      The price of the armor.
      * @param durability The durability of the armor.
+     * @throws IllegalArgumentException if name is empty, or weight/price/durability is negative.
      */
     public Armor(String name, double weight, double price, int durability) {
         super(name, weight, price);
+
+        if (durability < 0) {
+            throw new IllegalArgumentException("Armor durability cannot be negative.");
+        }
+
         this.durability = durability;
     }
 

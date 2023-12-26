@@ -2,7 +2,7 @@ package org.example;
 /**
  * Represents the base class for ammunition.
  */
-class Ammunition {
+public class Ammunition {
     String name;
     double weight;
     double price;
@@ -13,8 +13,19 @@ class Ammunition {
      * @param name   The name of the ammunition.
      * @param weight The weight of the ammunition.
      * @param price  The price of the ammunition.
+     * @throws IllegalArgumentException if name is empty, or weight/price is negative.
      */
     public Ammunition(String name, double weight, double price) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty: " + name);
+        }
+        if (weight < 0) {
+            throw new IllegalArgumentException("Weight cannot be negative: " + weight);
+        }
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative: " + price);
+        }
+
         this.name = name;
         this.weight = weight;
         this.price = price;
